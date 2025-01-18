@@ -16,17 +16,13 @@ def cl(): return r.close()
 def debug(): context.log_level='DEBUG'
 
 
-def r(REMOTE_INFO:str,REMOTE_LOCAL:bool):
+def r(REMOTE_INFO:str):
     global r
 
-    if REMOTE_LOCAL==True:
-        r=process(REMOTE_INFO)
-        
-    
-    else:                                           
-        
+    REMOTE_IP=REMOTE_INFO.split()[1]
+    REMOTE_PORT=int(REMOTE_INFO.split()[2])
+    r=remote(REMOTE_IP,REMOTE_PORT)
 
-        REMOTE_IP=REMOTE_INFO.split()[1]
-        REMOTE_PORT=int(REMOTE_INFO.split()[2])
-
-        r=remote(REMOTE_IP,REMOTE_PORT)
+def p(REMOTE_INFO:str):
+    global r
+    r=process(REMOTE_INFO)
