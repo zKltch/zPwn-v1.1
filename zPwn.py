@@ -3,14 +3,14 @@ from pwn import *
 context.arch='amd64'
 r=''
 
-def s(payload): return r.send(payload)
-def sl(payload): return r.sendline(payload)
-def sla(after, payload): return r.sendlineafter(after, payload)
-def sa(after, payload): return r.sendafter(after, payload)
-def rc(num): return r.recv(num)
-def rcl(): return r.recvline()
-def rcls(num): return r.recvlines(num)
-def rcu(payload): return r.recvuntil(payload)
+def s(payload): return r.send(payload.encode())
+def sl(payload): return r.sendline(payload.encode())
+def sla(after, payload): return r.sendlineafter(after.encode(), payload.encode())
+def sa(after, payload): return r.sendafter(after.encode(), payload.encode())
+def rc(num): return r.recv(num.encode()).decode()
+def rcl(): return r.recvline().decode()
+def rcls(num): return r.recvlines(num.encode()).decode()
+def rcu(payload): return r.recvuntil(payload.encode()).decode()
 def ita(): return r.interactive()
 def cl(): return r.close()
 def debug(): context.log_level='DEBUG'
@@ -26,3 +26,4 @@ def r(REMOTE_INFO:str):
 def p(REMOTE_INFO:str):
     global r
     r=process(REMOTE_INFO)
+    
