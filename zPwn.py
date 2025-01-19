@@ -14,7 +14,7 @@ def rcu(payload): return r.recvuntil(payload)
 def ita(): return r.interactive()
 def cl(): return r.close()
 def debug(): context.log_level='DEBUG'
-def gdb(): return gdb.attach(r)
+def gdbat(): return gdb.attach(r)
 
 
 def r(REMOTE_INFO:str):
