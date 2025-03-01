@@ -1,8 +1,7 @@
 from pwn import *
 
-context.arch='amd64'
-r=''
 
+r=''
 
 #connect
 
@@ -33,6 +32,7 @@ def cl(): return r.close()
 
 #shorten function
 
+def arch(arc:str): context.arch=f'{arc}'
 def debug(): context.log_level='DEBUG'
 def gdbat(): return gdb.attach(r)
 
@@ -82,5 +82,3 @@ class shells:
     // write( 1 , rsp , 0x50 )
 
     ''' 
-
-
