@@ -1,2 +1,2 @@
-# zPwn-v1.1
+# zPwn-v1.2
 more covenient to use pwntool
