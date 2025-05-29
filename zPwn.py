@@ -1,5 +1,8 @@
-from pwn import *
 
+#zPwn v1.2
+#Update context.terminal,ld binary libc
+
+from pwn import *
 
 r=''
 
@@ -15,7 +18,18 @@ def r(REMOTE_INFO:str):
 def p(REMOTE_INFO:str):
     global r
     r=process(REMOTE_INFO)
-    
+
+def libcp(ld:str,process_info:str,libc:str)
+    global r
+
+    r = process([ld, process_info], env={"LD_PRELOAD":libc})    
+
+#shorten function
+
+def terminal(): context.terminal = ['tmux', 'new-window']
+def arch(arc:str): context.arch=f'{arc}'
+def debug(): context.log_level='DEBUG'
+def gdbat(): return gdb.attach(r)
 
 #shorten common command 
 
@@ -29,12 +43,6 @@ def rcls(num): return r.recvlines(num)
 def rcu(payload): return r.recvuntil(payload)
 def ita(): return r.interactive()
 def cl(): return r.close()
-
-#shorten function
-
-def arch(arc:str): context.arch=f'{arc}'
-def debug(): context.log_level='DEBUG'
-def gdbat(): return gdb.attach(r)
 
 
 #shells
