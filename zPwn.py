@@ -19,7 +19,7 @@ def p(REMOTE_INFO:str):
     global r
     r=process(REMOTE_INFO)
 
-def libcp(ld:str,process_info:str,libc:str)
+def libcp(ld:str,process_info:str,libc:str):
     global r
 
     r = process([ld, process_info], env={"LD_PRELOAD":libc})    
